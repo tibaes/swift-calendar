@@ -1,0 +1,15 @@
+PODS:
+  - JTAppleCalendar (6.1.1)
+  - SwiftIconFont (2.6.0)
+
+DEPENDENCIES:
+  - JTAppleCalendar
+  - SwiftIconFont
+
+SPEC CHECKSUMS:
+  JTAppleCalendar: fc53eb29ec81f8a90969e2d214b3aa610ab4e5b3
+  SwiftIconFont: bbe1f32e1e16bac87dad8566afc80132cb8d072c
+
+PODFILE CHECKSUM: bc4db10a555300802119d1d7672d7dbb560452d0
+
+COCOAPODS: 1.1.1
