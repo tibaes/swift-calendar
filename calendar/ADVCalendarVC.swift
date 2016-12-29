@@ -1,10 +1,17 @@
-import UIKit
-import Foundation
-import PlaygroundSupport
-@testable import SwiftIconFont
-@testable import JTAppleCalendar
+//
+//  ADVCalendarVC.swift
+//  calendar
+//
+//  Created by Rafael H Tibaes on 12/29/16.
+//  Copyright © 2016 Rafael H Tibaes. All rights reserved.
+//
 
-class ADVDayCell : JTAppleDayCell {
+import Foundation
+import UIKit
+import SwiftIconFont
+import JTAppleCalendar
+
+class ADVDayCell : JTAppleDayCellView {
     var label: UILabel = UILabel()
     
     override init(frame: CGRect) {
@@ -25,13 +32,11 @@ class ADVDayCell : JTAppleDayCell {
     }
 }
 
-class ADVCalendarViewController : UIViewController, JTAppleCalendarViewDataSource, JTAppleCalendarViewDelegate {
-    init(frame: CGRect) {
+class ADVCalendarVC : UIViewController, JTAppleCalendarViewDataSource, JTAppleCalendarViewDelegate {
+    init() {
         super.init(nibName: nil, bundle: nil)
         
-        print("ADVCalendarViewController init wih frame: ", frame)
-        
-        self.view = UIView(frame: frame)
+        self.view = UIView()
         self.view.backgroundColor = UIColor.green
         
         let margins = self.view.layoutMarginsGuide
@@ -71,15 +76,3 @@ class ADVCalendarViewController : UIViewController, JTAppleCalendarViewDataSourc
         advCalendarCell.label.text = cellState.text
     }
 }
-
-// cell design
-
-let screen = CGRect(x: 0, y: 0, width: 414, height: 736) // iphone 7 plus
-
-let viewCtrl = ADVCalendarViewController(frame: screen)
-let view = viewCtrl.view
-
-// play!
-
-PlaygroundPage.current.liveView = view
-PlaygroundPage.current.needsIndefiniteExecution = true
