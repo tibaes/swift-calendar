@@ -16,29 +16,24 @@ class ADVDayCell : JTAppleDayCellView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        loadView()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("DayCell init with coder is not implemented.")
-    }
-    
-    func loadView() {
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(label)
         label.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         label.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
     }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("DayCell init with coder is not implemented.")
+    }
 }
 
 class ADVCalendarVC : UIViewController, JTAppleCalendarViewDataSource, JTAppleCalendarViewDelegate {
-    init() {
+    init(frame: CGRect) {
         super.init(nibName: nil, bundle: nil)
         
-        self.view = UIView()
+        self.view = UIView(frame: frame)
         self.view.backgroundColor = UIColor.green
-        
         let margins = self.view.layoutMarginsGuide
         
         let calendar = JTAppleCalendarView()
@@ -46,14 +41,16 @@ class ADVCalendarVC : UIViewController, JTAppleCalendarViewDataSource, JTAppleCa
         calendar.dataSource = self
         calendar.delegate = self
         calendar.cellInset = CGPoint(x: 0, y: 0)
+        calendar.registerCellViewClass(type: ADVDayCell.self)
         calendar.backgroundColor = UIColor.white
+        
         calendar.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(calendar)
         calendar.topAnchor.constraint(equalTo: margins.topAnchor).isActive = true
         calendar.leadingAnchor.constraint(equalTo: margins.leadingAnchor).isActive = true
         calendar.trailingAnchor.constraint(equalTo: margins.trailingAnchor).isActive = true
-        //calendar.widthAnchor.constraint(equalTo: margins.widthAnchor).isActive = true
-        //calendar.heightAnchor.constraint(equalToConstant: 400).isActive = true */
+        calendar.widthAnchor.constraint(equalTo: margins.widthAnchor).isActive = true
+        calendar.heightAnchor.constraint(equalTo: margins.heightAnchor).isActive = true
     }
     
     required init?(coder aDecoder: NSCoder) {
